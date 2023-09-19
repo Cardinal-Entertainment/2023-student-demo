@@ -4,10 +4,18 @@ import { Container, Button } from 'react-bootstrap';
 import { Link } from "wouter";
 import Leaderboard from './components/Leaderboard';
 
+const GAMES = [
+    { id: "Catch", storageKey: "Leaderboard_Catch", className: "Catchgame" },
+    { id: "Match", storageKey: "Leaderboard_Match", className: "Matchgame" },
+    { id: "Sort", storageKey: "Leaderboard_Sort", className: "Sortgame" }
+  ];
+
 function Home() {
     // Retrieve leaderboard data from local storage
-    const storedData = localStorage.getItem('Leaderboard');
-    const leaderboardData = storedData ? JSON.parse(storedData) : [];
+    const leaderboards = GAMES.map(game => {
+        const storedData = localStorage.getItem(game.storageKey);
+        return storedData ? JSON.parse(storedData) : [];
+    });
 
     return (
         <Container fluid className="Home-background">
@@ -21,9 +29,15 @@ function Home() {
             <div className="Matchgame"></div>
             <div className="Sortgame"></div>
             <div className="Catchgame"></div>
-            <div className="leaderboard-match"></div>
-            <div className="leaderboard-sort"></div>
-            <div className="leaderboard-catch"></div>
+            
+            {GAMES.map((game, index) => (
+              <React.Fragment key={game.id}>
+                <div className={game.className}></div>
+                <div className={`leaderboard-${game.id.toLowerCase()}`}>
+                    <Leaderboard data={leaderboards[index]} />
+                </div>
+              </React.Fragment>
+            ))}
 
 
         </Container>
