@@ -18,6 +18,14 @@ function Home() {
                   />
             </video>
             <h1 className="gameTitle">CLICK A MINI-GAME TO PLAY</h1>
+            <div className="Matchgame"></div>
+            <div className="Sortgame"></div>
+            <div className="Catchgame"></div>
+            <div className="leaderboard-match"></div>
+            <div className="leaderboard-sort"></div>
+            <div className="leaderboard-catch"></div>
+
+
         </Container>
 
         // <Container fluid className="Home-background">
