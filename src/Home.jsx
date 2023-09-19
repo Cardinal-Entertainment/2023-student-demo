@@ -21,24 +21,26 @@ function Home() {
 
 
 
-
+            <div className="image">
             <div className="Matchgame">
                 <Link href="/Match"> 
-                    <img src="match.png" alt="Match Game" />
+                    <img src="images/match.png" alt="Match Game" className="game-image" />
                 </Link>
             </div>
 
             <div className="Sortgame">
                 <Link href="/Sort"> 
-                    <img src="sort.png" alt="Sort Game" />
+                    <img src="images/sort.png" alt="Sort Game" className="game-image" />
                 </Link>
             </div>
 
             <div className="Catchgame">
                 <Link href="/Catch"> 
-                    <img src="catch.png" alt="Catch Game" />
+                    <img src="images/catch.png" alt="Catch Game" className="game-image" />
                 </Link>
             </div>
+            </div>
+
 
 
 
