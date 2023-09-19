@@ -18,9 +18,33 @@ function Home() {
                   />
             </video>
             <h1 className="gameTitle">CLICK A MINI-GAME TO PLAY</h1>
-            <div className="Matchgame"></div>
-            <div className="Sortgame"></div>
-            <div className="Catchgame"></div>
+
+
+
+            <div className="image">
+            <div className="Matchgame">
+                <Link href="/Match"> 
+                    <img src="images/match.png" alt="Match Game" className="game-image" />
+                </Link>
+            </div>
+
+            <div className="Sortgame">
+                <Link href="/Sort"> 
+                    <img src="images/sort.png" alt="Sort Game" className="game-image" />
+                </Link>
+            </div>
+
+            <div className="Catchgame">
+                <Link href="/Catch"> 
+                    <img src="images/catch.png" alt="Catch Game" className="game-image" />
+                </Link>
+            </div>
+            </div>
+
+
+
+
+
             <div className="leaderboard-match"></div>
             <div className="leaderboard-sort"></div>
             <div className="leaderboard-catch"></div>
