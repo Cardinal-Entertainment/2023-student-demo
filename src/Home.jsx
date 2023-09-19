@@ -21,7 +21,7 @@ function Home() {
         <Container fluid className="Home-background">
             <video className="logo-video" autoPlay muted>
                  <source
-                  src="logo_animation.mp4"
+                  src="zoombies_logo.webm"
                   type="video/mp4"
                   />
             </video>
