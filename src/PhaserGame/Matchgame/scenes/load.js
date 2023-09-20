@@ -39,7 +39,7 @@ export class Load extends Phaser.Scene {
     }  
 
     preload() {
-        this.load.image('background', './images/bg.png');
+        this.load.image('background', './images/bg_match.png');
         this.load.image('card-back', './images/back.png');
         this.load.image('card-1or11', './images/1_or_11.png');
         this.load.image('card-double', './images/double.png');
@@ -51,12 +51,11 @@ export class Load extends Phaser.Scene {
         this.load.image('gameoverbg', './images/blackout_screen_tint.png');
         this.load.image('gameover', './images/game_over_popup.png');
         this.load.image('bluebtn', './images/blue_button_300.png');
-        this.load.image('greenbtn', './images/green_button_300.png');
         this.load.image('redbtn', './images/red_button_300.png');
         this.load.audio('yes', './sounds/yes.mp3');
         this.load.audio('wrong', './sounds/wrong.mp3');
         this.load.spritesheet('redFlame_spritesheet', './images/redNormal.png', { frameWidth: 100, frameHeight: 100, endframe: 65 });
-        this.load.spritesheet('blueFlame_spritesheet', './images/blue.png', { frameWidth: 100, frameHeight: 100, endframe: 65 });
+        this.load.spritesheet('blueFlame_spritesheet', './images/blueFlame.png', { frameWidth: 100, frameHeight: 100, endframe: 65 });
         this.load.spritesheet('greenFlame_spritesheet', './images/greenSimple.png', { frameWidth: 100, frameHeight: 100, endframe: 30 });
         this.load.spritesheet('purpleFlame_spritesheet', './images/purpleSmall.png', { frameWidth: 100, frameHeight: 100, endframe: 40, padding: 10 });
     }
