@@ -3,11 +3,27 @@ import React from 'react';
 import { Container, Button } from 'react-bootstrap';
 import { Link } from "wouter";
 import Leaderboard from './components/Leaderboard';
+import nakamaInstance from './utils/nakama';
+
+async function call_nakama_async() {
+    const session = await nakamaInstance.getNakamaUserSession();
+
+    console.log(await nakamaInstance.client.getAccount(session));
+
+    const result = await nakamaInstance.client.listLeaderboardRecords(session, 'bonez_wins');
+    
+    result.records.forEach(function(record){
+        //console.log(record);
+        console.log("%o:%o", record.username, record.score, record.rank);
+    });
+}
 
 function Home() {
     // Retrieve leaderboard data from local storage
     const storedData = localStorage.getItem('Leaderboard');
     const leaderboardData = storedData ? JSON.parse(storedData) : [];
+
+    call_nakama_async();
 
     return (
         <Container fluid className="Home-background">
@@ -23,19 +39,19 @@ function Home() {
 
             <div className="image">
             <div className="Matchgame">
-                <Link href="/Match"> 
+                <Link href="/match"> 
                     <img src="images/match.png" alt="Match Game" className="game-image" />
                 </Link>
             </div>
 
             <div className="Sortgame">
-                <Link href="/Sort"> 
+                <Link href="/sort"> 
                     <img src="images/sort.png" alt="Sort Game" className="game-image" />
                 </Link>
             </div>
 
             <div className="Catchgame">
-                <Link href="/Catch"> 
+                <Link href="/catch"> 
                     <img src="images/catch.png" alt="Catch Game" className="game-image" />
                 </Link>
             </div>
