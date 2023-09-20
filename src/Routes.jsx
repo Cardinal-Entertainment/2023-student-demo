@@ -11,19 +11,19 @@ const Routes = () => {
     return (
         <RouterContext.Provider value={push}>
         <>
-            <Route exact path="/">
+            <Route exact path="/minigames">
                 <Home></Home>
             </Route>
 
-            <Route path="/Sort">
+            <Route path="/sort">
                 <Sort></Sort>
             </Route>
 
-            <Route path="/Catch">
+            <Route path="/catch">
                 <Catch></Catch>
             </Route>
 
-            <Route path="/Match">
+            <Route path="/match">
                 <Match></Match>
             </Route>
 
