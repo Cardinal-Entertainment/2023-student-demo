@@ -20,27 +20,27 @@ export class Load extends Phaser.Scene {
         this.isGameOver = false;
     }
 
-    saveGameData(score, date) {
-        // Check if both score and date are defined
-        if (score !== undefined && date !== undefined) {
-            const gameData = {
-                score: score,
-                date: date
-            };
+    // saveGameData(score, date) {
+    //     // Check if both score and date are defined
+    //     if (score !== undefined && date !== undefined) {
+    //         const gameData = {
+    //             score: score,
+    //             date: date
+    //         };
     
-            let existingData = JSON.parse(localStorage.getItem('Leaderboard')) || [];
+    //         let existingData = JSON.parse(localStorage.getItem('Leaderboard')) || [];
     
-            existingData.push(gameData);
-            existingData.sort((a, b) => b.score - a.score);
+    //         existingData.push(gameData);
+    //         existingData.sort((a, b) => b.score - a.score);
     
-            existingData = existingData.slice(0, 5);
+    //         existingData = existingData.slice(0, 5);
 
-            localStorage.setItem('Leaderboard', JSON.stringify(existingData));
-        } else {
-            // Handle the case where score or date is undefined
-            console.error('score and date must be defined to save game data.');
-        }
-    }
+    //         localStorage.setItem('Leaderboard', JSON.stringify(existingData));
+    //     } else {
+    //         // Handle the case where score or date is undefined
+    //         console.error('score and date must be defined to save game data.');
+    //     }
+    // }
     
 
     loadFont(name, url) {
@@ -80,8 +80,8 @@ export class Load extends Phaser.Scene {
     
 
     preload() {
-        this.loadFont('Truculenta', '/fonts/Truculenta-Regular.ttf');
-        this.loadFont('TruculentaBold', '/fonts/Truculenta-Black.ttf');
+        this.loadFont('Truculenta', './fonts/Truculenta-Regular.ttf');
+        this.loadFont('TruculentaBold', './fonts/Truculenta-Black.ttf');
         this.load.image("bg", './images/bg.png');
 
         this.load.image("retryButton", './images/blue_button_300.png')
@@ -98,19 +98,19 @@ export class Load extends Phaser.Scene {
         
         
         //Elements
-        this.load.image("crate", '/images/crate.png');
+        this.load.image("crate", './images/crate.png');
 
         //Sounds
-        this.load.audio('backgroundSound', './sounds/game-music-loop-3.mp3');
-        this.load.audio('clickSound', './sounds/click.mp3');
+        this.load.audio('backgroundSound', './sounds/game.mp3');
+        this.load.audio('clickSound', './sounds/click-sort.mp3');
         this.load.audio('wrongSound', './sounds/wrong.mp3');
         this.load.audio('correctSound', './sounds/shooting-sound.mp3');
         this.load.audio('gameoverSound', './sounds/gameover.mp3');
 
         // VFX
-        this.load.spritesheet('redFlame_spritesheet','./images/redNormal.png.png', { frameWidth: 100, frameHeight: 100, endframe: 65 });
-        this.load.spritesheet('purpleFlame_spritesheet', './images/purpleSmall.png.png', { frameWidth: 100, frameHeight: 100, endframe: 40, padding: 10 });
-        this.load.spritesheet('blueFlame_spritesheet','./images/blue.png', { frameWidth: 100, frameHeight: 100, endframe: 65 });
+        this.load.spritesheet('redFlame_spritesheet','./images/redNormal.png', { frameWidth: 100, frameHeight: 100, endframe: 65 });
+        this.load.spritesheet('purpleFlame_spritesheet', './images/purpleSmall.png', { frameWidth: 100, frameHeight: 100, endframe: 40, padding: 10 });
+        this.load.spritesheet('blueFlame_spritesheet','./images/blueFlame.png', { frameWidth: 100, frameHeight: 100, endframe: 65 });
     }
 
     create() {
@@ -402,7 +402,7 @@ export class Load extends Phaser.Scene {
         exitButton.on('pointerup', () => {
             // Debugging
             //localStorage.clear();
-            window.location.href = '/'; // Move to Home
+            window.location.href = '/minigames/'; // Move to Home
         });
         exitButton.depth = 16;
 
@@ -425,9 +425,9 @@ export class Load extends Phaser.Scene {
         purpleFlame_sprite1.play('purpleFlame_spritesheet_ani');
         purpleFlame_sprite1.depth = 18;
         // Store date and save date
-        const currentDate = new Date().toISOString().slice(0, 10);  // gets date in YYYY-MM-DD format
-        if (finalScoreValue !== '0') {
-            this.saveGameData(finalScoreValue, currentDate);
-        }
+        // const currentDate = new Date().toISOString().slice(0, 10);  // gets date in YYYY-MM-DD format
+        // if (finalScoreValue !== '0') {
+        //     this.saveGameData(finalScoreValue, currentDate);
+        // }
     }
 }
