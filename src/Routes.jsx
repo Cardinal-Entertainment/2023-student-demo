@@ -11,7 +11,7 @@ const Routes = () => {
     return (
         <RouterContext.Provider value={push}>
         <>
-            <Route exact path="/minigames">
+            <Route exact path="/">
                 <Home></Home>
             </Route>
 
