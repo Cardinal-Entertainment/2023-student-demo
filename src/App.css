@@ -68,3 +68,21 @@
   border-radius: 5px;
 }
 
+/* Leaderboard */
+
+.Leaderboards {
+  display:flex;
+  flex-direction: row; 
+  justify-content: space-between;
+  font-family: 'Truculenta', sans-serif;
+  font-size: 40px;
+  margin: 40px;
+}
+
+.leaderboard-match {
+  margin-right: 230px;
+}
+
+.leaderboard-catch {
+  margin-left: 230px;
+}
