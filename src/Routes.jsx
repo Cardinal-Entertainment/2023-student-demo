@@ -6,10 +6,10 @@ import Match from './PhaserGame/Matchgame/Match';
 import RouterContext from './RouterContext';
 
 const Routes = () => {
-    //const { push } = useRouter();
+    const { push } = useRouter();
 
     return (
-
+        <RouterContext.Provider value={push}>
         <>
             <Route exact path="/">
                 <Home></Home>
@@ -28,7 +28,7 @@ const Routes = () => {
             </Route>
 
         </>
-
+        </RouterContext.Provider>
     )
 }
 
