@@ -32,3 +32,39 @@
   margin-top: -20px; /* Spacing between the video and the h1 */
   text-align: center;
 }
+
+
+.image {
+  display: flex;
+  justify-content: space-between;
+}
+ /* App.css */
+.game-image {
+  width: 350px; /* Adjust the width as needed */
+  height: auto; /* Automatically adjust the height to maintain aspect ratio */
+  cursor: pointer; /* Add a pointer cursor to indicate interactivity */
+  transition: filter 0.3s; /* Add a smooth transition for hover effect */
+  margin: 40px;
+}
+
+/* Apply a grayscale filter and display "Click to play" on hover */
+.game-image:hover {
+  filter: grayscale(50%);
+  position: relative;
+}
+
+/* Add a text overlay on hover */
+.game-image:hover::before {
+  content: "Click to play";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+

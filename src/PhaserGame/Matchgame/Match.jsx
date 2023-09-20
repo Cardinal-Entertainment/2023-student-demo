@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import GamePhaser from "./GamePhaser";
-import '../App.css';
+import '../../App.css';
 
 export default function Game() {
   
