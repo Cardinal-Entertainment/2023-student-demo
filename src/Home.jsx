@@ -3,11 +3,23 @@ import React from 'react';
 import { Container, Button } from 'react-bootstrap';
 import { Link } from "wouter";
 import Leaderboard from './components/Leaderboard';
+import nakamaInstance from './utils/nakama';
 
-function Home() {
+async function Home() {
     // Retrieve leaderboard data from local storage
     const storedData = localStorage.getItem('Leaderboard');
     const leaderboardData = storedData ? JSON.parse(storedData) : [];
+
+    const session = await nakamaInstance.getNakamaUserSession();
+
+    console.log(await nakamaInstance.client.getAccount(session));
+
+    const result = await nakamaInstance.client.listLeaderboardRecords(session, 'bonez_wins');
+    
+    result.records.forEach(function(record){
+        //console.log(record);
+        console.log("%o:%o", record.username, record.score, record.rank);
+    });
 
     return (
         <Container fluid className="Home-background">
