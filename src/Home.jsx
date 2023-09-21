@@ -1,41 +1,69 @@
 import './App.css';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Button } from 'react-bootstrap';
 import { Link } from "wouter";
 import Leaderboard from './components/Leaderboard';
 import nakamaInstance from './utils/nakama';
 
-async function call_nakama_async() {
-    const session = await nakamaInstance.getNakamaUserSession();
+// async function call_nakama_async() {
+//     const session = await nakamaInstance.getNakamaUserSession();
 
-    console.log(await nakamaInstance.client.getAccount(session));
+//     console.log(await nakamaInstance.client.getAccount(session));
 
-    const result = await nakamaInstance.client.listLeaderboardRecords(session, 'bonez_wins');
+//     const result = await nakamaInstance.client.listLeaderboardRecords(session, 'bonez_wins', null, 10);
     
-    result.records.forEach(function(record){
-        //console.log(record);
-        console.log("%o:%o", record.username, record.score, record.rank);
-    });
-}
+//     console.log(result.records);
+//     result.records.forEach(function(record){
+//         //console.log(record);
+//         console.log("%o:%o", record.username, record.score, record.rank);
+//     });
+// }
 
-const GAMES = [
-    { id: "Match", storageKey: "Leaderboard_Match", className: "Matchgame" },
-    { id: "Sort", storageKey: "Leaderboard_Sort", className: "Sortgame" },
-    { id: "Catch", storageKey: "Leaderboard_Catch", className: "Catchgame" }
+const GAMES = [ // !!!!!!!!!!!!! Change id later !!!!!!!!!!!!!!!!
+    { id: "bonez_zoom_won", storageKey: "Leaderboard_Match", className: "Matchgame" },
+    { id: "bonez_wins", storageKey: "Leaderboard_Sort", className: "Sortgame" },
+    { id: "bone_god", storageKey: "Leaderboard_Catch", className: "Catchgame" }
   ];
 
 function Home() {
-    // Retrieve leaderboard data from local storage
-    const leaderboards = GAMES.map(game => {
-        const storedData = localStorage.getItem(game.storageKey);
-        return storedData ? JSON.parse(storedData) : [];
-    });
 
-    call_nakama_async();
+    const [leaderboardData, setLeaderboardData] = useState([]);
+
+    useEffect(() => {
+        // Fetch leaderboard data for each game
+        GAMES.forEach(async game => {
+            const session = await nakamaInstance.getNakamaUserSession();
+
+            // Assuming each game's leaderboard is identified by the game's id in the Nakama server
+            const result = await nakamaInstance.client.listLeaderboardRecords(session, game.id, null, 10);
+
+            const transformedData = result.records.map(record => ({
+                username: record.username,
+                numOfPlay: record.num_score, // Adjust as needed.
+                score: record.score
+            }));
+
+            // Store the fetched data in the state object under the respective game's id
+            setLeaderboardData(prevLeaderboards => ({
+                ...prevLeaderboards,
+                [game.id]: transformedData
+            }));
+        });
+    }, []); // Empty dependency array to fetch once on component mount
+
+
+    // Retrieve leaderboard data from local storage
+    // const leaderboards = GAMES.map(game => {
+    //     const storedData = localStorage.getItem(game.storageKey);
+    //     return storedData ? JSON.parse(storedData) : [];
+    // });
+
+    // call_nakama_async();
+
 
     return (
         <Container fluid className="Home-background">
-            <audio autoPlay loop className='baclground-audio'>
+            <audio autoPlay loop className='background-audio'>
                 <source src="./sounds/homeBackground.mp3" type="audio/mpeg" />
             </audio>            
             <video className="logo-video" autoPlay muted>
@@ -68,11 +96,11 @@ function Home() {
 
             <div className="Leaderboards">
                 {GAMES.map((game, index) => (
-                <React.Fragment key={game.id}>
+                    <React.Fragment key={game.id}>
                         <div className={`leaderboard-${game.id.toLowerCase()}`}>
-                            <Leaderboard data={leaderboards[index]} />
+                            <Leaderboard data={leaderboardData[game.id] || []} />
                         </div>
-                </React.Fragment>
+                    </React.Fragment>
                 ))}
             </div>
 

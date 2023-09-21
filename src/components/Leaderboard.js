@@ -9,16 +9,18 @@ const Leaderboard = ({ data }) => {
       <thead>
         <tr>
           <th>#</th>
+          <th>Username</th>
+          <th># of Game</th>
           <th>Score</th>
-          <th>Date</th>
         </tr>
       </thead>
       <tbody>
         {data.map((item, index) => (
           <tr key={index}>
             <td>{index + 1}</td>
+            <td>{item.username}</td>
+            <td>{item.numOfPlay}</td>
             <td>{item.score}</td>
-            <td>{item.date}</td>
           </tr>
         ))}
       </tbody>

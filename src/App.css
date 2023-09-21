@@ -5,10 +5,6 @@
   color: white;
 }
 
-.audio-player {
-  top: 0;             
-  left: 0;            
-}    
 
 .Home-background {
   display: flex;
@@ -80,8 +76,7 @@
   flex-direction: row; 
   justify-content: space-between;
   font-family: 'Truculenta', sans-serif;
-  font-size: 40px;
-  margin: 40px;
+  font-size: 20px;
 }
 
 .leaderboard-match {
