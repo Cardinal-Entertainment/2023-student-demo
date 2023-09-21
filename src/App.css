@@ -5,6 +5,11 @@
   color: white;
 }
 
+.audio-player {
+  top: 0;             
+  left: 0;            
+}    
+
 .Home-background {
   display: flex;
   flex-direction: column;       
