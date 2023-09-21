@@ -41,32 +41,22 @@ export class Load extends Phaser.Scene {
     this.load.image("steal", "./images/steal.png");
     this.load.image("tie_breaker", "./images/tie_breaker.png");
     this.load.image("skull", "./images/back.png");
-    this.load.image("bg_overlay", "./images/bg_overlay.png");
-    this.load.image("bg_back", "./images/bg_back.png");
+    this.load.image("bg_overlay", "./images/bg_overlay_catch.png");
+    this.load.image("bg_back", "./images/bg_back_catch.png");
 
     this.load.image("skull_end", "./images/512x512.png");
     this.load.image("blue_button", "./images/blue_button_300.png");
     this.load.image("red_button", "./images/red_button_300.png");
     this.load.image("popup", "./images/game_over_popup.png");
 
-    this.loadFont('Truculenta', '/fonts/Truculenta-Regular.ttf');
-    this.loadFont('TruculentaBold', '/fonts/Truculenta-Black.ttf');
+    this.loadFont('Truculenta', './fonts/Truculenta-Regular.ttf');
+    this.loadFont('TruculentaBold', './fonts/Truculenta-Black.ttf');
 
-    this.load.audio("game", "./sound/game.mp3");
-    this.load.audio("click", "./sound/click.mp3");
-    this.load.audio("wrong", "./sound/wrong.mp3");
-    this.load.audio("gameover", "./sound/gameover.mp3");
+    this.load.audio("game", "./sounds/game.mp3");
+    this.load.audio("click", "./sounds/click-catch.mp3");
+    this.load.audio("wrong", "./sounds/wrong.mp3");
+    this.load.audio("gameover", "./sounds/gameover.mp3");
 
-    // Load the vfx sprite sheet
-    this.load.spritesheet("vfx", "./images/vfx1.png", {
-      frameWidth: 192,
-      frameHeight: 192,
-    });
-
-    this.load.spritesheet("fire", "./images/fire.png", {
-      frameWidth: 192,
-      frameHeight: 192,
-    });
   }
 
   create() {
@@ -87,13 +77,13 @@ export class Load extends Phaser.Scene {
 
     const textStyle = {
       fontFamily: 'TruculentaBold',
-      fontSize: '120px',
+      fontSize: '80px',
       fill: 'orange'
     };
 
     const textStyle1 = {
       fontFamily: 'TruculentaBold',
-      fontSize: '120px',
+      fontSize: '80px',
       fill: '#fff'
     };
 
@@ -112,7 +102,7 @@ export class Load extends Phaser.Scene {
     ).setDepth(5);
     this.timerText.setOrigin(0, 0);
 
-    this.summary1 = this.add.text(this.cameras.main.width - 3630, 400, 'CATCH AS MANY', textStyle1);
+    this.summary1 = this.add.text(this.cameras.main.width - 3630, 400, 'CATCH AS MANY', {font: '80px TruculentaBold', fill: '#fff'});
     this.summary2 = this.add.text(this.cameras.main.width - 3600, 600, 'CARDS AS YOU', textStyle1);
     this.summary3 = this.add.text(this.cameras.main.width - 3650, 800, 'CAN BEFORE TIME', textStyle1);
     this.summary4 = this.add.text(this.cameras.main.width - 3550, 1000, 'RUNS OUT!', textStyle1);
@@ -128,19 +118,7 @@ export class Load extends Phaser.Scene {
       }
     );
 
-    this.anims.create({
-      key: 'fire1',
-      frames: this.anims.generateFrameNumbers('fire', { start: 0, end: 5 }),
-      frameRate: 10,
-      repeat: -1,
-    });
-
-    this.anims.create({
-      key: 'fire2',
-      frames: this.anims.generateFrameNumbers('fire', { start: 6, end: 11 }),
-      frameRate: 10,
-      repeat: -1,
-    });
+    
 
     this.cardsLostText = this.add.text(
       this.cameras.main.width - 2900,
@@ -204,8 +182,7 @@ export class Load extends Phaser.Scene {
         this.cardsCaughtText.setText(`Cards Caught: ${this.caughtCards.length}`);
         this.cardsLostText.setText(`Cards Lost: ${this.lostCards.length}`);
 
-        // Play the vfx animation at the card's position
-        this.playVfxAnimation(card.x, card.y);
+
 
         card.destroy();
       }
@@ -235,14 +212,7 @@ export class Load extends Phaser.Scene {
       console.log('Game Over!');
       this.gameOver = true;
 
-      const fire1 = this.add.sprite(-100, -500, 'fire');
-      fire1.setDepth(20);
-      fire1.anims.play('fire1');
-      
-
-      const fire2 = this.add.sprite(100, -500, 'fire');
-      fire2.setDepth(20);
-      fire2.anims.play('fire2');
+     
 
       this.gameOverContainer = this.add.container(this.cameras.main.width / 2, this.cameras.main.height / 2);
       this.gameOverContainer.setDepth(10);
@@ -297,7 +267,7 @@ export class Load extends Phaser.Scene {
         .on('pointerdown', () => {
           console.log('Go to homepage clicked');
           this.gameOverContainer.destroy();
-          window.location.href = '/';
+          window.location.href = '/minigames'; 
         });
       this.gameOverContainer.add(redButton);
 
@@ -384,13 +354,7 @@ export class Load extends Phaser.Scene {
       callback: spawnCard,
     });
 
-    // Animation for vfx
-    this.anims.create({
-      key: "playVfx",
-      frames: this.anims.generateFrameNumbers("vfx"),
-      frameRate: 20,
-      repeat: 0,
-    });
+   
   }
 
   update() {
@@ -461,22 +425,5 @@ export class Load extends Phaser.Scene {
     this.sound.play('gameover');
   }
 
-  // Function to play the vfx animation
-  playVfxAnimation(x, y) {
-    // Check if the animation exists, and if not, create it
-    if (!this.anims.exists('playVfx')) {
-      this.anims.create({
-        key: "playVfx",
-        frames: this.anims.generateFrameNumbers("vfx"),
-        frameRate: 20,
-        repeat: 0,
-      });
-    }
-
-    const vfx = this.add.sprite(x, y, "vfx");
-    vfx.anims.play("playVfx");
-    vfx.on('animationcomplete', () => {
-      vfx.destroy();
-    });
-  }
+ 
 }
