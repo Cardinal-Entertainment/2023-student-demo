@@ -49,8 +49,8 @@ export class Load extends Phaser.Scene {
     this.load.image("red_button", "./images/red_button_300.png");
     this.load.image("popup", "./images/game_over_popup.png");
 
-    this.loadFont('Truculenta', '/fonts/Truculenta-Regular.ttf');
-    this.loadFont('TruculentaBold', '/fonts/Truculenta-Black.ttf');
+    this.loadFont('Truculenta', './fonts/Truculenta-Regular.ttf');
+    this.loadFont('TruculentaBold', './fonts/Truculenta-Black.ttf');
 
     this.load.audio("game", "./sounds/game.mp3");
     this.load.audio("click", "./sounds/click-catch.mp3");
@@ -102,7 +102,7 @@ export class Load extends Phaser.Scene {
     ).setDepth(5);
     this.timerText.setOrigin(0, 0);
 
-    this.summary1 = this.add.text(this.cameras.main.width - 3630, 400, 'CATCH AS MANY', textStyle1);
+    this.summary1 = this.add.text(this.cameras.main.width - 3630, 400, 'CATCH AS MANY', {font: '80px TruculentaBold', fill: '#fff'});
     this.summary2 = this.add.text(this.cameras.main.width - 3600, 600, 'CARDS AS YOU', textStyle1);
     this.summary3 = this.add.text(this.cameras.main.width - 3650, 800, 'CAN BEFORE TIME', textStyle1);
     this.summary4 = this.add.text(this.cameras.main.width - 3550, 1000, 'RUNS OUT!', textStyle1);
@@ -267,7 +267,7 @@ export class Load extends Phaser.Scene {
         .on('pointerdown', () => {
           console.log('Go to homepage clicked');
           this.gameOverContainer.destroy();
-          window.location.href = '/';
+          window.location.href = '/minigames'; 
         });
       this.gameOverContainer.add(redButton);
 
