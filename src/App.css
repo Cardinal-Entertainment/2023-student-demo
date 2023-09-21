@@ -19,11 +19,15 @@
   z-index: -1;
 }
 
+
+
+
 .logo-video {
   width: 300px;
   height: 200px;
   margin: 0 auto;       
 }
+
 
 .gameTitle {
   color: white;
@@ -34,39 +38,113 @@
 }
 
 
+
+.gameText {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.gameText h3 {
+  margin: 0 160px; /* Adjust the margin as needed */
+}
+
+
+
+
 .image {
   display: flex;
   justify-content: space-between;
 }
- /* App.css */
-.game-image {
+
+
+
+
+
+
+
+/* App.css */
+.match-image {
+  position: relative;
   width: 350px; /* Adjust the width as needed */
   height: auto; /* Automatically adjust the height to maintain aspect ratio */
   cursor: pointer; /* Add a pointer cursor to indicate interactivity */
-  transition: filter 0.3s; /* Add a smooth transition for hover effect */
   margin: 40px;
+  border: 3px solid skyblue; /* Add a border */
+  box-sizing: border-box; /* Include the border in the element's dimensions */
 }
 
-/* Apply a grayscale filter and display "Click to play" on hover */
-.game-image:hover {
-  filter: grayscale(50%);
-  position: relative;
+/* Apply a grayscale filter on hover */
+.match-image:hover {
+  filter: brightness(40%);
 }
 
-/* Add a text overlay on hover */
-.game-image:hover::before {
-  content: "Click to play";
+/* Tooltip style */
+.match-image::after {
+  content: "Hovering over Match Image"; /* Text to display on hover */
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
   background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  font-family: 'Truculenta', sans-serif;
+  font-size: 16px;
   padding: 5px 10px;
   border-radius: 5px;
+  z-index: 1; /* Ensure the tooltip appears above the image */
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s;
 }
+
+/* Show the tooltip on hover */
+.match-image:hover::after {
+  opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* App.css */
+.sort-image {
+  width: 350px; /* Adjust the width as needed */
+  height: auto; /* Automatically adjust the height to maintain aspect ratio */
+  cursor: pointer; /* Add a pointer cursor to indicate interactivity */
+  margin: 40px;
+  border: 3px solid orange; /* Add a green border */
+  box-sizing: border-box; /* Include the border in the element's dimensions */
+}
+
+
+/* Apply a grayscale filter on hover */
+.sort-image:hover {
+  filter: brightness(40%);
+  position: relative;
+}
+/* App.css */
+.catch-image {
+  width: 350px; /* Adjust the width as needed */
+  height: auto; /* Automatically adjust the height to maintain aspect ratio */
+  cursor: pointer; /* Add a pointer cursor to indicate interactivity */
+  margin: 40px;
+  border: 3px solid green; /* Add a green border */
+  box-sizing: border-box; /* Include the border in the element's dimensions */
+}
+
+
+/* Apply a grayscale filter on hover */
+.catch-image:hover {
+  filter: brightness(40%);
+  position: relative;
+}
+
 
 /* Leaderboard */
 

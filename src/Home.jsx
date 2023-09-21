@@ -43,22 +43,29 @@ function Home() {
             </video>
             <h1 className="gameTitle">CLICK A MINI-GAME TO PLAY</h1>
 
+
+
+            <div className='gameText'>
+            <h3>Match Game</h3>     <h3>Catch Game  </h3>       <h3>Sort Game</h3>
+            </div>
+
+
             <div className="image">
             <div className="Matchgame">
                 <Link href="/match"> 
-                    <img src="images/match.png" alt="Match Game" className="game-image" />
+                    <img src="images/match.png" alt="Match Game" className="match-image" />
                 </Link>
             </div>
 
             <div className="Sortgame">
                 <Link href="/sort"> 
-                    <img src="images/sort.png" alt="Sort Game" className="game-image" />
+                    <img src="images/sort.png" alt="Sort Game" className="sort-image" />
                 </Link>
             </div>
 
             <div className="Catchgame">
                 <Link href="/catch"> 
-                    <img src="images/catch.png" alt="Catch Game" className="game-image" />
+                    <img src="images/catch.png" alt="Catch Game" className="catch-image" />
                 </Link>
             </div>
             </div>
