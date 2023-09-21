@@ -267,7 +267,7 @@ export class Load extends Phaser.Scene {
         .on('pointerdown', () => {
           console.log('Go to homepage clicked');
           this.gameOverContainer.destroy();
-          window.location.href = 'http://localhost:3000/minigames/'; 
+          window.location.href = '/minigames'; 
         });
       this.gameOverContainer.add(redButton);
 
