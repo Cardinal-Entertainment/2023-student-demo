@@ -175,6 +175,20 @@ export class Load extends Phaser.Scene {
             const y = height * (i < 6 ? 0.84 : 0.65);
             this.add.image(x, y, cardNames[i]).setScale(0.3)
         }
+
+        //Insert Return Button
+        const returnButton = this.add.image(this.scale.width / 5, this.scale.height / 16, 'exitButton').setScale(1.2).setInteractive();
+        returnButton.on('pointerup', () => {
+            window.location.href = '/minigames/'; // Move to Home
+        });
+
+        // Add text for the exit button
+        const returnButtonText = this.add.text(this.scale.width / 5, this.scale.height / 16, 'Return Home', {
+            font: '55px TruculentaBold',
+            fill: '#ffffff'
+        });
+        returnButtonText.setOrigin(0.5);
+                
         
         //Insert Score
         let score = 0;

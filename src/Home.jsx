@@ -35,6 +35,9 @@ function Home() {
 
     return (
         <Container fluid className="Home-background">
+            <audio autoPlay loop className='baclground-audio'>
+                <source src="./sounds/homeBackground.mp3" type="audio/mpeg" />
+            </audio>            
             <video className="logo-video" autoPlay muted>
                  <source
                   src="zoombies_logo.webm"
