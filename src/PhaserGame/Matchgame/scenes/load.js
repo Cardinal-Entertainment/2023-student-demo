@@ -241,7 +241,7 @@ export class Load extends Phaser.Scene {
         }).setOrigin(0.5, 0.5);
         this.exitButton.setScale(1.3)
         this.exitButton.on('pointerup', () => {
-            window.location.href = "/";
+            window.location.href = "/minigames";
         });
         this.exitButton.setVisible(false);
         this.exitText.setVisible(false);
