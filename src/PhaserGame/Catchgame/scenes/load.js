@@ -305,16 +305,21 @@ export class Load extends Phaser.Scene {
       updateHighScore(this.score, 'minigame_catch');
     };
 
+
+
+
+
+    
     const spawnCard = () => {
       if (this.gameOver) return;
-
+    
       let objectKey;
       const rand = Math.random();
-
+    
       const minX = this.game.config.width * 0.4;
       const maxX = this.game.config.width * 0.7;
       const randomX = Phaser.Math.Between(minX, maxX);
-
+    
       if (rand <= 0.575) {
         objectKey = 'blue';
       } else if (rand <= 0.75) {
@@ -326,10 +331,10 @@ export class Load extends Phaser.Scene {
       } else {
         objectKey = 'skull';
       }
-
+    
       const card = this.add.image(randomX, Phaser.Math.Between(-200, -50), objectKey)
         .setDisplaySize(350, 530);
-
+    
       card.setInteractive();
       card.on('pointerdown', () => {
         if (objectKey === 'blue' || objectKey === 'white' || objectKey === 'red' || objectKey === 'purple') {
@@ -340,25 +345,39 @@ export class Load extends Phaser.Scene {
         }
         onCardClick(card);
       });
-
+    
       if (objectKey === 'skull') {
         card.setScale(1.5);
         card.on('pointerdown', () => {
           stopGame();
         });
       }
-
+    
       this.fallingObjects.push(card);
-
+    
       const minFallingSpeed = 20;
       const maxFallingSpeed = 50;
       const timeFactor = this.timer >= 0 ? 1 - this.timer / 60 : 0;
       const fallingSpeed = minFallingSpeed + (maxFallingSpeed - minFallingSpeed) * timeFactor;
-
+    
       card.y += fallingSpeed;
-
+    
       card.setDepth(-3);
+    
+      // Determine rotation direction (left or right)
+      const rotationDirection = Math.random() < 0.5 ? -1 : 1;
+      const rotationSpeed = (Math.random() * 0.02 + 0.01) * rotationDirection; // Random rotation speed
+    
+      card.rotationSpeed = rotationSpeed;
     };
+    
+
+
+
+
+
+
+
 
     this.time.addEvent({
       delay: 60000,
@@ -379,20 +398,21 @@ export class Load extends Phaser.Scene {
     const maxFallingSpeed = 50;
     const timeFactor = (this.timer >= 0 ? 1 - (this.timer / 60) : 0);
     const fallingSpeed = minFallingSpeed + (maxFallingSpeed - minFallingSpeed) * timeFactor;
-
+  
     this.fallingObjects.forEach((object, index) => {
       object.y += fallingSpeed;
-
+  
       if (object.y > this.game.config.height) {
         this.fallingObjects.splice(index, 1);
         this.lostCards.push(object.texture.key);
         this.cardsLostText.setText(`Cards Lost: ${this.lostCards.length}`);
         object.destroy();
       }
-
-      object.rotation += this.rotationSpeed;
+  
+      object.rotation += object.rotationSpeed; // Apply the card's rotation speed
     });
   }
+  
 
   resetGameState() {
     window.location.reload();
