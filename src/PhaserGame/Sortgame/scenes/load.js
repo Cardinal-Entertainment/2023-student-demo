@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import Score from './classes/Score.js';
 import timer from './classes/Timer.js'
+import nakamaInstance, { updateHighScore } from "../../../utils/nakama"
 
 export class Load extends Phaser.Scene {
     constructor() {
@@ -195,7 +196,7 @@ export class Load extends Phaser.Scene {
         this.scoreDisplay = this.add.score(2700, 200, 1, 100, score);
 
         //Insert Timer
-        this.timerDisplay = this.add.timer(1390, 200, 1, 120, 60);  
+        this.timerDisplay = this.add.timer(1390, 200, 1, 120, 5);  
 
         // Background Sound
         this.sound.play('backgroundSound', { loop: true });
@@ -440,8 +441,6 @@ export class Load extends Phaser.Scene {
         purpleFlame_sprite1.depth = 18;
         // Store date and save date
         // const currentDate = new Date().toISOString().slice(0, 10);  // gets date in YYYY-MM-DD format
-        // if (finalScoreValue !== '0') {
-        //     this.saveGameData(finalScoreValue, currentDate);
-        // }
+            updateHighScore(finalScoreValue,'minigame_sort');
     }
 }
