@@ -35,7 +35,7 @@ function Home() {
             const session = await nakamaInstance.getNakamaUserSession();
 
             // Assuming each game's leaderboard is identified by the game's id in the Nakama server
-            const result = await nakamaInstance.client.listLeaderboardRecords(session, game.id, null, 10);
+            const result = await nakamaInstance.client.listLeaderboardRecords(session, game.id, null, 5);
 
             const transformedData = result.records.map(record => ({
                 username: record.username,
@@ -77,7 +77,7 @@ function Home() {
 
 
             <div className='gameText'>
-            <h3 className="match-text">Match Game</h3>     <h3 className="catch-text">Catch Game  </h3>       <h3 className="sort-text">Sort Game</h3>
+            <h3 className="match-text">Match Game</h3>     <h3 className="sort-text">Sort Game</h3>    <h3 className="catch-text">Catch Game  </h3>  
             </div>
 
 

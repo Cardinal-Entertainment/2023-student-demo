@@ -56,12 +56,12 @@
   font-size: 60px;
 }
 .sort-text {
-  color: green;
+  color: orange;
   font-size: 60px;
   text-align: center;
 }
 .catch-text {
-  color: orange;
+  color: green;
   font-size: 60px;
 
 }
@@ -142,14 +142,21 @@
 }
 
 
-.leaderboard-match {
+.leaderboard-bonez_zoom_won {
   margin-right: 230px;
 }
 
 
-.leaderboard-catch {
+.leaderboard-bone_god {
   margin-left: 230px;
 }
+
+.leaderboard-bonez_wins {
+  margin: 1px;
+}
+
+
+
 
 .game-image-container:hover img {
   filter: brightness(30%);
