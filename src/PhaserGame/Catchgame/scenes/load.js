@@ -54,7 +54,7 @@ export class Load extends Phaser.Scene {
     this.loadFont('Truculenta', './fonts/Truculenta-Regular.ttf');
     this.loadFont('TruculentaBold', './fonts/Truculenta-Black.ttf');
 
-    this.load.audio("game", "./sounds/game.mp3");
+    this.load.audio("game", "./sounds/catchgame.mp3");
     this.load.audio("click", "./sounds/click-catch.mp3");
     this.load.audio("wrong", "./sounds/wrong.mp3");
     this.load.audio("gameover", "./sounds/gameover.mp3");
