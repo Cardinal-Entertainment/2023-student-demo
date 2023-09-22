@@ -82,7 +82,7 @@ function Home() {
 
 
              <div className="image">
-                <div className="Matchgame">
+                <div>
                  <Link href="/match">
                     <div className="game-image-container">
                         <img src="images/match.png" alt="Match Game" className="match-image" />
@@ -91,7 +91,7 @@ function Home() {
                  </Link>
                 </div>
 
-                <div className="Sortgame">
+                <div>
                     <Link href="/sort">
                     <div className="game-image-container">
                         <img src="images/sort.png" alt="Sort Game" className="sort-image" />
@@ -100,7 +100,7 @@ function Home() {
                     </Link>
                 </div>
 
-                <div className="Catchgame">
+                <div>
                     <Link href="/catch">
                     <div className="game-image-container">
                         <img src="images/catch.png" alt="Catch Game" className="catch-image" />

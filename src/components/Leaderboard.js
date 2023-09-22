@@ -3,9 +3,9 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 
-const Leaderboard = ({ data }) => {
+const Leaderboard = ({ data, className }) => {
   return (
-    <Table striped borderless hover size="sm">
+    <Table className={`custom-leaderboard ${className}`} variant="dark" borderless hover size="sm">
       <thead>
         <tr>
           <th>#</th>

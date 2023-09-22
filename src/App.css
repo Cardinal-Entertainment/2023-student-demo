@@ -133,6 +133,27 @@
 
 /* Leaderboard */
 
+.custom-leaderboard {
+  background-color: transparent !important; 
+}
+
+.custom-leaderboard th, 
+.custom-leaderboard td {
+  background-color: transparent !important; 
+}
+
+.Matchgame thead th {
+  color: skyblue;
+}
+
+.Sortgame thead th {
+  color: orange;
+}
+
+.Catchgame thead th {
+  color: green;
+}
+
 .Leaderboards {
   display:flex;
   flex-direction: row; 
