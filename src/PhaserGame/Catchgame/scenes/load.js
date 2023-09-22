@@ -1,4 +1,6 @@
 import Phaser from "phaser";
+import { updateHighScore } from "../../../utils/nakama";
+
 
 export class Load extends Phaser.Scene {
   constructor() {
@@ -202,23 +204,23 @@ export class Load extends Phaser.Scene {
       }
     };
 
-    const saveTopScores = () => {
-      const topScores = [];
+    // const saveTopScores = () => {
+    //   const topScores = [];
 
-      topScores.push({ score: this.score, date: new Date().toISOString() });
+    //   topScores.push({ score: this.score, date: new Date().toISOString() });
 
-      const existingScoresJSON = localStorage.getItem('topScores');
-      if (existingScoresJSON) {
-        const existingScores = JSON.parse(existingScoresJSON);
+    //   const existingScoresJSON = localStorage.getItem('topScores');
+    //   if (existingScoresJSON) {
+    //     const existingScores = JSON.parse(existingScoresJSON);
 
-        topScores.push(...existingScores);
-        topScores.sort((a, b) => b.score - a.score);
+    //     topScores.push(...existingScores);
+    //     topScores.sort((a, b) => b.score - a.score);
 
-        topScores.splice(5);
-      }
+    //     topScores.splice(5);
+    //   }
 
-      localStorage.setItem('topScores', JSON.stringify(topScores));
-    };
+    //   localStorage.setItem('topScores', JSON.stringify(topScores));
+    // };
 
     const stopGame = () => {
       this.stopBackgroundMusic();
@@ -299,7 +301,8 @@ export class Load extends Phaser.Scene {
       }).setOrigin(0.5, 0.5);
       this.gameOverContainer.add(homepageText);
 
-      saveTopScores();
+      //saveTopScores();
+      updateHighScore(this.score, 'minigame_catch');
     };
 
     const spawnCard = () => {
