@@ -61,6 +61,10 @@ export class Load extends Phaser.Scene {
         this.load.spritesheet('blueFlame_spritesheet', './images/blueFlame.png', { frameWidth: 100, frameHeight: 100, endframe: 65 });
         this.load.spritesheet('greenFlame_spritesheet', './images/greenSimple.png', { frameWidth: 100, frameHeight: 100, endframe: 30 });
         this.load.spritesheet('purpleFlame_spritesheet', './images/purpleSmall.png', { frameWidth: 100, frameHeight: 100, endframe: 40, padding: 10 });
+
+
+        this.load.audio("game", "./sounds/matchgame.mp3");
+
     }
 
     createAnimation (spritesheet, frames, frameRate, repeat = -1)
@@ -82,6 +86,10 @@ export class Load extends Phaser.Scene {
         let scale = Math.max(scaleX, scaleY);
         bg.setScale(scale);
         bg.setTint(0x999999);
+
+
+        this.backgroundMusic = this.sound.add('game', { loop: true });
+        this.backgroundMusic.play();
 
         this.createAnimation('blueFlame_spritesheet', 65, 30, -1);
         const burst1_sprite1 = this.add.sprite(3640, 1530, 'blueFlame_spritesheet')
@@ -284,6 +292,12 @@ export class Load extends Phaser.Scene {
 
     }
 
+    stopBackgroundMusic() {
+        if (this.backgroundMusic) {
+          this.backgroundMusic.stop();
+        }
+      }
+
     init() {
         this.gameOver = false;
         this.state = STATE_IDLE;
@@ -437,6 +451,10 @@ export class Load extends Phaser.Scene {
         // Set the background to gameoverbg with 60% opacity
         this.gameOverBgImage.setVisible(true);
         this.gameOverBgImage.setAlpha(0.75);  // Set opacity to 60%
+
+
+        this.stopBackgroundMusic();
+
 
         // Display the gameover rectangle first
         this.roundRect.setVisible(true);
