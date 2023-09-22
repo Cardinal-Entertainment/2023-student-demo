@@ -39,6 +39,8 @@ export class Load extends Phaser.Scene {
     }  
 
     preload() {
+        this.loadFont('Truculenta', './fonts/Truculenta-Regular.ttf');
+        this.loadFont('TruculentaBold', './fonts/Truculenta-Black.ttf');
         this.load.image('background', './images/bg_match.png');
         this.load.image('card-back', './images/back.png');
         this.load.image('card-1or11', './images/1_or_11.png');
@@ -122,6 +124,19 @@ export class Load extends Phaser.Scene {
 
         const { width, height} = this.scale;
 
+        //Insert Return Button
+        const returnButton = this.add.image(this.scale.width / 5, this.scale.height / 16, 'redbtn').setScale(1.2).setInteractive();
+        returnButton.on('pointerup', () => {
+            window.location.href = '/minigames/'; // Move to Home
+        });
+
+        // Add text for the return button
+        const returnButtonText = this.add.text(this.scale.width / 5, this.scale.height / 16, 'Return Home', {
+            font: '55px TruculentaBold',
+            fill: '#ffffff'
+        });
+        returnButtonText.setOrigin(0.5);    
+
         // Create the cards and store them in an array
         const cards = [];
 
@@ -153,7 +168,7 @@ export class Load extends Phaser.Scene {
         this.flippedCards = [];
 
         this.welcomeText = this.add.text(650, 250, `MAKE AS MANY MATCHES AS YOU CAN BEFORE TIME RUNS OUT!`, {
-            font: '130px "Truculenta"',
+            font: '130px "TruculentaBold"',
             shadow: {
                 offsetX: 3,
                 offsetY: 3,
@@ -165,7 +180,7 @@ export class Load extends Phaser.Scene {
 
         this.timerValue = 15; // starting value
         this.timerText = this.add.text(200, 650, `Time\n${this.timerValue}`, {
-            font: '100px Truculenta',   // Increased font size
+            font: '100px TruculentaBold',   // Increased font size
             fill: '#2ad496'
         });
 
@@ -179,7 +194,7 @@ export class Load extends Phaser.Scene {
         this.scoreValue = 0;
 
         this.scoreText = this.add.text(200, 1300, `Score\n${this.scoreValue}`, {
-            font: '100px Truculenta',
+            font: '100px TruculentaBold',
             fill: '#2ad496'
         });
 

@@ -182,7 +182,7 @@ export class Load extends Phaser.Scene {
             window.location.href = '/minigames/'; // Move to Home
         });
 
-        // Add text for the exit button
+        // Add text for the return button
         const returnButtonText = this.add.text(this.scale.width / 5, this.scale.height / 16, 'Return Home', {
             font: '55px TruculentaBold',
             fill: '#ffffff'
