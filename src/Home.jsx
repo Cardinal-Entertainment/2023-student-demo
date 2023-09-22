@@ -20,9 +20,9 @@ import nakamaInstance from './utils/nakama';
 // }
 
 const GAMES = [ // !!!!!!!!!!!!! Change id later !!!!!!!!!!!!!!!!
-    { id: "bonez_zoom_won", storageKey: "Leaderboard_Match", className: "Matchgame" },
-    { id: "bonez_wins", storageKey: "Leaderboard_Sort", className: "Sortgame" },
-    { id: "bone_god", storageKey: "Leaderboard_Catch", className: "Catchgame" }
+    { id: "minigame_match", storageKey: "Leaderboard_Match", className: "Matchgame" },
+    { id: "minigame_sort", storageKey: "Leaderboard_Sort", className: "Sortgame" },
+    { id: "minigame_catch", storageKey: "Leaderboard_Catch", className: "Catchgame" }
   ];
 
 function Home() {
