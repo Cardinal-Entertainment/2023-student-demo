@@ -41,7 +41,7 @@ export async function updateHighScore(newScore, leaderboardId) {
   try {
       // Retrieve the user session
       const session = await nakamaInstance.getNakamaUserSession();
-      // console.log(score)
+      
       // Submit the score to the Nakama server
       const record = await nakamaInstance.client.writeLeaderboardRecord(session, leaderboardId, {score:newScore});
 

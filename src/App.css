@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Truculenta:opsz,wght@12..72,900&display=swap');
 
+
 .App {
   font-family: 'Truculenta', sans-serif;
   color: white;
@@ -54,16 +55,18 @@
 .match-text {
   color: skyblue;
   font-size: 60px;
+  text-shadow: 4px 4px #000000;
 }
 .sort-text {
   color: orange;
   font-size: 60px;
   text-align: center;
+  text-shadow: 4px 4px #000000;
 }
 .catch-text {
   color: green;
   font-size: 60px;
-
+  text-shadow: 4px 4px #000000;
 }
 
 
@@ -72,10 +75,6 @@
   display: flex;
   justify-content: space-between;
 }
-
-
-
-
 
 
 
@@ -90,12 +89,6 @@
   box-sizing: border-box; /* Include the border in the element's dimensions */
 }
 
-/* Apply a grayscale filter on hover
-.match-image:hover {
-  filter: brightness(40%);
-} */
-
-
 
 /* App.css */
 .sort-image {
@@ -108,11 +101,6 @@
 }
 
 
-/* Apply a grayscale filter on hover
-.sort-image:hover {
-  filter: brightness(40%);
-  position: relative;
-} */
 /* App.css */
 .catch-image {
   width: 350px; /* Adjust the width as needed */
@@ -124,14 +112,42 @@
 }
 
 
-/* Apply a grayscale filter on hover
-.catch-image:hover {
-  filter: brightness(40%);
-  position: relative;
-} */
-
-
 /* Leaderboard */
+
+
+
+.custom-leaderboard {
+  background-color: transparent !important; 
+}
+
+.custom-leaderboard thead th {
+  background-color: transparent !important; 
+  padding: 5px 18px;  /* Adjust as required */
+  font-size: 23px;     /* Adjust as required */
+  font-family: 'Truculenta', sans-serif;
+  text-shadow: 3px 3px #000000;
+}
+
+/* Increase the padding and font-size for table data cells */
+.custom-leaderboard tbody td {
+  background-color: transparent !important; 
+  padding: 10px 20px;  /* Adjust as required */
+  font-size: 20px;     /* Adjust as required */
+  text-shadow: 3px 3px #000000;
+}
+
+.custom-leaderboard.Matchgame thead th {
+  color: skyblue;  
+}
+
+.custom-leaderboard.Sortgame thead th {
+  color: orange;
+}
+
+.custom-leaderboard.Catchgame thead th {
+  color: green;
+}
+
 
 .Leaderboards {
   display:flex;
@@ -139,20 +155,17 @@
   justify-content: space-between;
   font-family: 'Truculenta', sans-serif;
   font-size: 20px;
+  text-shadow: 2px 2px #000000;
 }
 
 
-.leaderboard-bonez_zoom_won {
-  margin-right: 230px;
+.leaderboard-minigame_match {
+  margin-right: 40px;
 }
 
 
-.leaderboard-bone_god {
-  margin-left: 230px;
-}
-
-.leaderboard-bonez_wins {
-  margin: 1px;
+.leaderboard-minigame_catch {
+  margin-left: 40px;
 }
 
 
