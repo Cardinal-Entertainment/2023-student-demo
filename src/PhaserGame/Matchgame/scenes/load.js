@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import nakamaInstance from "../../../utils/nakama"
 
 const STATE_IDLE = 1;
 const STATE_ONE_CARD_FLIPPED = 2;
@@ -249,24 +250,23 @@ export class Load extends Phaser.Scene {
     }
 
     updateTimer() {
-        this.timerValue -= 1; // decrement timer value
-        this.timerText.setText(`Time\n${this.timerValue}`);
-        
-
-        if (this.timerValue <= 0) {
-            // Store date and save data
-            const currentDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
-            this.updateHighScore(this.scoreValue, currentDate);
-
-            // Stop the timer
-            this.timerValue = 0; 
-            this.timerText.setText('Time\n0');
+        if (this.timerValue > 0) {
+            this.timerValue -= 1; // decrement timer value
+            this.timerText.setText(`Time\n${this.timerValue}`);
+        }
     
+        // Stop the timer
+        if (this.timerValue === 0) {
+            this.timerText.setText('Time\n0');
+            // You can also add any additional logic here for when the timer reaches 0.
+        }
+
+        if (this.timerValue <= 0 && !this.gameOver) {
+            this.updateHighScore(this.scoreValue);
             this.endGame();
             this.showGameOverScreen();
-
-            this.isHighScoreUpdated = true;
         }
+
     }
 
     init() {
@@ -296,34 +296,30 @@ export class Load extends Phaser.Scene {
         }
     }
 
-    updateHighScore(score, date) {
-        if (score !== undefined && date !== undefined && this.timerValue <= 0) {
-            const gameData = {
-                score: score,
-                date: date
-            };
-        
-            let existingData = JSON.parse(localStorage.getItem('Leaderboard')) || [];
-        
-            // Check for duplicate entry
-            const duplicate = existingData.find(entry => entry.score === gameData.score || entry.date === gameData.date);
-            if (!duplicate) {
-                // If no duplicate, add new game data to existing data
-                existingData.push(gameData);
-            }
-            
-            // Sort the array in descending order of scores
-            existingData.sort((a, b) => b.score - a.score);
-        
-            // Trim the array to keep only top 5
-            existingData = existingData.slice(0, 5);
-        
-            localStorage.setItem('Leaderboard', JSON.stringify(existingData));
-        } else {
-            console.error('score and date must be defined to save game data.');
+    async updateHighScore(score) {
+        if (!score || this.timerValue > 0) {
+            console.error('score and date must be defined, and timer should be stopped to save game data.');
+            return;
+        }
+    
+        let leaderboardId = ""; // Default leaderboard ID
+        leaderboardId = "minigame_match";
+    
+        try {
+            // Retrieve the user session
+            const session = await nakamaInstance.getNakamaUserSession();
+            // console.log(score)
+            // Submit the score to the Nakama server
+            const record = await nakamaInstance.client.writeLeaderboardRecord(session, leaderboardId, {score:this.scoreValue});
+    
+            // Log the updated score
+            console.log("Score updated:", record);
+        } catch (error) {
+            console.error("Failed to update score on Nakama:", error);
         }
     }
-      
+    
+    
     flip(card) {
         if (!this.clicksAllowed || 
             this.gameOver || 
@@ -423,11 +419,6 @@ export class Load extends Phaser.Scene {
             
             this.scoreValue += 1;
             this.scoreText.setText(`Score\n${this.scoreValue}`);
-
-            if (!this.gameOver && !this.isHighScoreUpdated) {
-                const currentDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
-                this.updateHighScore(this.scoreValue, currentDate);
-            }
         } else {
             this.setState(STATE_UNMATCHED);
             wrong.play()
