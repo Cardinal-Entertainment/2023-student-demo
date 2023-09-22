@@ -60,6 +60,8 @@ export class Load extends Phaser.Scene {
     resetGame() {
         this.matchCount = 0;
         this.mismatchCount = 0;
+        this.spawnRate = 140;
+        this.cardSpawnCounter = 0;
     }
 
     preload() {
@@ -292,16 +294,18 @@ export class Load extends Phaser.Scene {
             this.scene.crateSprites.forEach((crate, index) => {
                 if (Phaser.Geom.Intersects.RectangleToRectangle(this.getBounds(), crate.getBounds())) {
                     if (this.texture.key === cardNames[index]) { // Only increment counter for matching crate
+
                         this.scene.crateCounters[index]++;
                         this.scene.matchCount++;
                         this.scene.crateTexts[index].setText(this.scene.crateCounters[index].toString());
                         correct.play();
 
                         collidedWithCrate = true;
-                        
+                        console.log("collision!")
                         
                         currentScore += 1;  // Increase score by 10 for every correct drop. Adjust the value as per your game's logic.
                         this.scene.scoreDisplay.updateScore(currentScore);
+                        this.destroy();  // Remove the card if it's dropped on a crate.
                     }
                     else if (currentScore > 0) {
                         currentScore -= 1
@@ -310,14 +314,10 @@ export class Load extends Phaser.Scene {
                         this.scene.scoreDisplay.updateScore(currentScore);
                     }
                 }
-            });
-
-            if (!collidedWithCrate) {
                 this.x = this.getData('startPosX');
                 this.y = this.getData('startPosY');
-            } else {
-                this.destroy();  // Remove the card if it's dropped on a crate.
-            }
+
+            });
         });
 
         // When the card is being dragged
