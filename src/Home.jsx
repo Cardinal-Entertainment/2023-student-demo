@@ -91,23 +91,23 @@ function Home() {
                  </Link>
                 </div>
 
-            <div className="Sortgame">
-                <Link href="/sort">
-                <div className="game-image-container">
-                    <img src="images/sort.png" alt="Sort Game" className="sort-image" />
-                    <div className="image-hover-text">Click to Play</div>
+                <div className="Sortgame">
+                    <Link href="/sort">
+                    <div className="game-image-container">
+                        <img src="images/sort.png" alt="Sort Game" className="sort-image" />
+                        <div className="image-hover-text">Click to Play</div>
+                    </div>
+                    </Link>
                 </div>
-                </Link>
-            </div>
 
-            <div className="Catchgame">
-                <Link href="/catch">
-                <div className="game-image-container">
-                    <img src="images/catch.png" alt="Catch Game" className="catch-image" />
-                    <div className="image-hover-text">Click to Play</div>
+                <div className="Catchgame">
+                    <Link href="/catch">
+                    <div className="game-image-container">
+                        <img src="images/catch.png" alt="Catch Game" className="catch-image" />
+                        <div className="image-hover-text">Click to Play</div>
+                    </div>
+                    </Link>
                 </div>
-                </Link>
-            </div>
             </div>
 
 

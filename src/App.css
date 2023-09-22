@@ -43,11 +43,11 @@
 .gameText {
   text-align: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .gameText h3 {
-  margin: 0 100px; /* Adjust the margin as needed */
+  margin: 0 100px;
 }
 
 
@@ -59,7 +59,6 @@
   color: green;
   font-size: 60px;
   text-align: center;
-
 }
 .catch-text {
   color: orange;
@@ -86,24 +85,15 @@
   width: 350px; /* Adjust the width as needed */
   height: auto; /* Automatically adjust the height to maintain aspect ratio */
   cursor: pointer; /* Add a pointer cursor to indicate interactivity */
-  margin: 40px;
+  margin-top: 10px;
   border: 3px solid skyblue; /* Add a border */
   box-sizing: border-box; /* Include the border in the element's dimensions */
 }
 
-/* Apply a grayscale filter on hover */
+/* Apply a grayscale filter on hover
 .match-image:hover {
   filter: brightness(40%);
-}
-
-
-
-
-
-
-
-
-
+} */
 
 
 
@@ -112,33 +102,33 @@
   width: 350px; /* Adjust the width as needed */
   height: auto; /* Automatically adjust the height to maintain aspect ratio */
   cursor: pointer; /* Add a pointer cursor to indicate interactivity */
-  margin: 40px;
+  margin-top: 10px;
   border: 3px solid orange; /* Add a green border */
   box-sizing: border-box; /* Include the border in the element's dimensions */
 }
 
 
-/* Apply a grayscale filter on hover */
+/* Apply a grayscale filter on hover
 .sort-image:hover {
   filter: brightness(40%);
   position: relative;
-}
+} */
 /* App.css */
 .catch-image {
   width: 350px; /* Adjust the width as needed */
   height: auto; /* Automatically adjust the height to maintain aspect ratio */
   cursor: pointer; /* Add a pointer cursor to indicate interactivity */
-  margin: 40px;
+  margin-top: 10px;
   border: 3px solid green; /* Add a green border */
   box-sizing: border-box; /* Include the border in the element's dimensions */
 }
 
 
-/* Apply a grayscale filter on hover */
+/* Apply a grayscale filter on hover
 .catch-image:hover {
   filter: brightness(40%);
   position: relative;
-}
+} */
 
 
 /* Leaderboard */
@@ -151,15 +141,19 @@
   font-size: 20px;
 }
 
+
 .leaderboard-match {
   margin-right: 230px;
 }
+
 
 .leaderboard-catch {
   margin-left: 230px;
 }
 
-
+.game-image-container:hover img {
+  filter: brightness(30%);
+}
 
 
 /* ... (previous CSS code) */
@@ -170,16 +164,16 @@
   width: 350px; /* Adjust the width as needed */
   height: auto;
   cursor: pointer;
-  margin: 40px;
+  margin: 0 45px;
   border: 3px solid transparent; /* Add a transparent border */
   box-sizing: border-box;
   transition: filter 0.3s ease-in-out; /* Smooth transition for hover effect */
 }
 
 /* Apply grayscale filter on hover */
-.game-image-container:hover {
-  filter: brightness(40%);
-}
+/* .game-image-container:hover {
+  filter: brightness(50%);
+} */
 
 /* Styling for the hover text */
 .image-hover-text {
@@ -188,11 +182,9 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.7);
+  font-family: 'Truculenta', sans-serif;
   color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 16px;
+  font-size: 40px;
 }
 
 /* Show the text when hovering over the game image container */
