@@ -8,10 +8,10 @@ const Leaderboard = ({ data, className }) => {
     <Table className={`custom-leaderboard ${className}`} variant="dark" borderless hover size="sm">
       <thead>
         <tr>
-          <th>#</th>
-          <th>Username</th>
-          <th># of Game</th>
-          <th>Score</th>
+          <th>RANK</th>
+          <th>PLAYER</th>
+          <th># of GAMES</th>
+          <th>SCORE</th>
         </tr>
       </thead>
       <tbody>

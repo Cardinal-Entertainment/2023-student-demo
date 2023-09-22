@@ -5,21 +5,7 @@ import { Link } from "wouter";
 import Leaderboard from './components/Leaderboard';
 import nakamaInstance from './utils/nakama';
 
-// async function call_nakama_async() {
-//     const session = await nakamaInstance.getNakamaUserSession();
-
-//     console.log(await nakamaInstance.client.getAccount(session));
-
-//     const result = await nakamaInstance.client.listLeaderboardRecords(session, 'bonez_wins', null, 10);
-    
-//     console.log(result.records);
-//     result.records.forEach(function(record){
-//         //console.log(record);
-//         console.log("%o:%o", record.username, record.score, record.rank);
-//     });
-// }
-
-const GAMES = [ // !!!!!!!!!!!!! Change id later !!!!!!!!!!!!!!!!
+const GAMES = [
     { id: "minigame_match", storageKey: "Leaderboard_Match", className: "Matchgame" },
     { id: "minigame_sort", storageKey: "Leaderboard_Sort", className: "Sortgame" },
     { id: "minigame_catch", storageKey: "Leaderboard_Catch", className: "Catchgame" }
@@ -50,15 +36,6 @@ function Home() {
             }));
         });
     }, []); // Empty dependency array to fetch once on component mount
-
-
-    // Retrieve leaderboard data from local storage
-    // const leaderboards = GAMES.map(game => {
-    //     const storedData = localStorage.getItem(game.storageKey);
-    //     return storedData ? JSON.parse(storedData) : [];
-    // });
-
-    // call_nakama_async();
 
 
     return (
@@ -115,7 +92,7 @@ function Home() {
                 {GAMES.map((game, index) => (
                     <React.Fragment key={game.id}>
                         <div className={`leaderboard-${game.id.toLowerCase()}`}>
-                            <Leaderboard data={leaderboardData[game.id] || []} />
+                            <Leaderboard data={leaderboardData[game.id] || []} className={game.className}/>
                         </div>
                     </React.Fragment>
                 ))}
