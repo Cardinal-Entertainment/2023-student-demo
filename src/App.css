@@ -75,10 +75,6 @@
 
 
 
-
-
-
-
 /* App.css */
 .match-image {
   position: relative;
@@ -89,12 +85,6 @@
   border: 3px solid skyblue; /* Add a border */
   box-sizing: border-box; /* Include the border in the element's dimensions */
 }
-
-/* Apply a grayscale filter on hover
-.match-image:hover {
-  filter: brightness(40%);
-} */
-
 
 
 /* App.css */
@@ -108,11 +98,6 @@
 }
 
 
-/* Apply a grayscale filter on hover
-.sort-image:hover {
-  filter: brightness(40%);
-  position: relative;
-} */
 /* App.css */
 .catch-image {
   width: 350px; /* Adjust the width as needed */
@@ -122,13 +107,6 @@
   border: 3px solid green; /* Add a green border */
   box-sizing: border-box; /* Include the border in the element's dimensions */
 }
-
-
-/* Apply a grayscale filter on hover
-.catch-image:hover {
-  filter: brightness(40%);
-  position: relative;
-} */
 
 
 /* Leaderboard */
@@ -175,8 +153,6 @@
 .leaderboard-sort {
   margin: 1px;
 }
-
-
 
 
 .game-image-container:hover img {

@@ -213,7 +213,6 @@ export class Load extends Phaser.Scene {
         }
 
         this.cards.forEach((cards) => {
-            // console.log(delta);
             cards.x += (delta); 
 
             if (cards.x > 3840 + 700/2) {
@@ -264,7 +263,6 @@ export class Load extends Phaser.Scene {
             this.setData('isBeingDragged', true);
             click.play();
 
-            // this.setTint(0xff0000); 
         });
 
         // When the card is released
@@ -423,8 +421,6 @@ export class Load extends Phaser.Scene {
         purpleFlame_sprite1.setScale(10);
         purpleFlame_sprite1.play('purpleFlame_spritesheet_ani');
         purpleFlame_sprite1.depth = 18;
-        // Store date and save date
-        // const currentDate = new Date().toISOString().slice(0, 10);  // gets date in YYYY-MM-DD format
-            updateHighScore(finalScoreValue,'minigame_sort');
+        updateHighScore(finalScoreValue,'minigame_sort');
     }
 }
