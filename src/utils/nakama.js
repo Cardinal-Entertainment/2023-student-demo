@@ -36,4 +36,20 @@ if (nakamaUserSession) {
   redirectToAuth();
 }
 
+export async function updateHighScore(newScore, leaderboardId) {
+
+  try {
+      // Retrieve the user session
+      const session = await nakamaInstance.getNakamaUserSession();
+      // console.log(score)
+      // Submit the score to the Nakama server
+      const record = await nakamaInstance.client.writeLeaderboardRecord(session, leaderboardId, {score:newScore});
+
+      // Log the updated score
+      console.log("Score updated:", record);
+  } catch (error) {
+      console.error("Failed to update score on Nakama:", error);
+  }
+}
+
 export default nakamaInstance;
