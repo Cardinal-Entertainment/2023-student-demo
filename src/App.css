@@ -96,28 +96,6 @@
   filter: brightness(40%);
 }
 
-/* Tooltip style */
-.match-image::after {
-  content: "Hovering over Match Image"; /* Text to display on hover */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  font-family: 'Truculenta', sans-serif;
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  z-index: 1; /* Ensure the tooltip appears above the image */
-  opacity: 0; /* Initially hidden */
-  transition: opacity 0.3s;
-}
-
-/* Show the tooltip on hover */
-.match-image:hover::after {
-  opacity: 1;
-}
 
 
 
@@ -179,4 +157,45 @@
 
 .leaderboard-catch {
   margin-left: 230px;
+}
+
+
+
+
+/* ... (previous CSS code) */
+
+/* Styling for the individual game images and hover text */
+.game-image-container {
+  position: relative;
+  width: 350px; /* Adjust the width as needed */
+  height: auto;
+  cursor: pointer;
+  margin: 40px;
+  border: 3px solid transparent; /* Add a transparent border */
+  box-sizing: border-box;
+  transition: filter 0.3s ease-in-out; /* Smooth transition for hover effect */
+}
+
+/* Apply grayscale filter on hover */
+.game-image-container:hover {
+  filter: brightness(40%);
+}
+
+/* Styling for the hover text */
+.image-hover-text {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Show the text when hovering over the game image container */
+.game-image-container:hover .image-hover-text {
+  display: block;
 }

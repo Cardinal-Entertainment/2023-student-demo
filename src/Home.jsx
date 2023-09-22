@@ -81,25 +81,35 @@ function Home() {
             </div>
 
 
-            <div className="image">
-            <div className="Matchgame">
-                <Link href="/match"> 
-                    <img src="images/match.png" alt="Match Game" className="match-image" />
-                </Link>
-            </div>
+             <div className="image">
+                <div className="Matchgame">
+                 <Link href="/match">
+                    <div className="game-image-container">
+                        <img src="images/match.png" alt="Match Game" className="match-image" />
+                        <div className="image-hover-text">Click to Play</div>
+                    </div>
+                 </Link>
+                </div>
 
             <div className="Sortgame">
-                <Link href="/sort"> 
+                <Link href="/sort">
+                <div className="game-image-container">
                     <img src="images/sort.png" alt="Sort Game" className="sort-image" />
+                    <div className="image-hover-text">Click to Play</div>
+                </div>
                 </Link>
             </div>
 
             <div className="Catchgame">
-                <Link href="/catch"> 
+                <Link href="/catch">
+                <div className="game-image-container">
                     <img src="images/catch.png" alt="Catch Game" className="catch-image" />
+                    <div className="image-hover-text">Click to Play</div>
+                </div>
                 </Link>
             </div>
             </div>
+
 
             <div className="Leaderboards">
                 {GAMES.map((game, index) => (
