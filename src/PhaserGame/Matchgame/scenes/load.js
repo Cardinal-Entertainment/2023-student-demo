@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import nakamaInstance from "../../../utils/nakama"
+import nakamaInstance, { updateHighScore } from "../../../utils/nakama"
 
 const STATE_IDLE = 1;
 const STATE_ONE_CARD_FLIPPED = 2;
@@ -277,7 +277,7 @@ export class Load extends Phaser.Scene {
         }
 
         if (this.timerValue <= 0 && !this.gameOver) {
-            this.updateHighScore(this.scoreValue);
+            updateHighScore(this.scoreValue, 'minigame_match');
             this.endGame();
             this.showGameOverScreen();
         }
