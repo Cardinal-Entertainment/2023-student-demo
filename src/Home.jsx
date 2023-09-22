@@ -77,7 +77,7 @@ function Home() {
 
 
             <div className='gameText'>
-            <h3 className="match-text">Match Game</h3>     <h3 className="catch-text">Catch Game  </h3>       <h3 className="sort-text">Sort Game</h3>
+            <h3 className="match-text">Match Game</h3>     <h3 className="sort-text">Sort Game</h3>    <h3 className="catch-text">Catch Game  </h3>  
             </div>
 
 
