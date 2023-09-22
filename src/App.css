@@ -123,6 +123,7 @@
   padding: 5px 18px;  /* Adjust as required */
   font-size: 23px;     /* Adjust as required */
   font-family: 'Truculenta', sans-serif;
+  text-shadow: 2px 2px #000000;
 }
 
 /* Increase the padding and font-size for table data cells */
@@ -130,6 +131,7 @@
   background-color: transparent !important; 
   padding: 10px 20px;  /* Adjust as required */
   font-size: 20px;     /* Adjust as required */
+  text-shadow: 2px 2px #000000;
 }
 
 .custom-leaderboard.Matchgame thead th {
@@ -151,6 +153,7 @@
   justify-content: space-between;
   font-family: 'Truculenta', sans-serif;
   font-size: 20px;
+  text-shadow: 2px 2px #000000;
 }
 
 
