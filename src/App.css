@@ -20,11 +20,15 @@
   z-index: -1;
 }
 
+
+
+
 .logo-video {
   width: 300px;
   height: 200px;
   margin: 0 auto;       
 }
+
 
 .gameTitle {
   color: white;
@@ -35,39 +39,97 @@
 }
 
 
+
+.gameText {
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.gameText h3 {
+  margin: 0 100px;
+}
+
+
+.match-text {
+  color: skyblue;
+  font-size: 60px;
+}
+.sort-text {
+  color: green;
+  font-size: 60px;
+  text-align: center;
+}
+.catch-text {
+  color: orange;
+  font-size: 60px;
+
+}
+
+
+
 .image {
   display: flex;
   justify-content: space-between;
 }
- /* App.css */
-.game-image {
+
+
+
+
+
+
+
+/* App.css */
+.match-image {
+  position: relative;
   width: 350px; /* Adjust the width as needed */
   height: auto; /* Automatically adjust the height to maintain aspect ratio */
   cursor: pointer; /* Add a pointer cursor to indicate interactivity */
-  transition: filter 0.3s; /* Add a smooth transition for hover effect */
-  margin: 40px;
+  margin-top: 10px;
+  border: 3px solid skyblue; /* Add a border */
+  box-sizing: border-box; /* Include the border in the element's dimensions */
 }
 
-/* Apply a grayscale filter and display "Click to play" on hover */
-.game-image:hover {
-  filter: grayscale(50%);
+/* Apply a grayscale filter on hover
+.match-image:hover {
+  filter: brightness(40%);
+} */
+
+
+
+/* App.css */
+.sort-image {
+  width: 350px; /* Adjust the width as needed */
+  height: auto; /* Automatically adjust the height to maintain aspect ratio */
+  cursor: pointer; /* Add a pointer cursor to indicate interactivity */
+  margin-top: 10px;
+  border: 3px solid orange; /* Add a green border */
+  box-sizing: border-box; /* Include the border in the element's dimensions */
+}
+
+
+/* Apply a grayscale filter on hover
+.sort-image:hover {
+  filter: brightness(40%);
   position: relative;
+} */
+/* App.css */
+.catch-image {
+  width: 350px; /* Adjust the width as needed */
+  height: auto; /* Automatically adjust the height to maintain aspect ratio */
+  cursor: pointer; /* Add a pointer cursor to indicate interactivity */
+  margin-top: 10px;
+  border: 3px solid green; /* Add a green border */
+  box-sizing: border-box; /* Include the border in the element's dimensions */
 }
 
-/* Add a text overlay on hover */
-.game-image:hover::before {
-  content: "Click to play";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 5px 10px;
-  border-radius: 5px;
-}
+
+/* Apply a grayscale filter on hover
+.catch-image:hover {
+  filter: brightness(40%);
+  position: relative;
+} */
+
 
 /* Leaderboard */
 
@@ -79,10 +141,53 @@
   font-size: 20px;
 }
 
+
 .leaderboard-match {
   margin-right: 230px;
 }
 
+
 .leaderboard-catch {
   margin-left: 230px;
+}
+
+.game-image-container:hover img {
+  filter: brightness(30%);
+}
+
+
+/* ... (previous CSS code) */
+
+/* Styling for the individual game images and hover text */
+.game-image-container {
+  position: relative;
+  width: 350px; /* Adjust the width as needed */
+  height: auto;
+  cursor: pointer;
+  margin: 0 45px;
+  border: 3px solid transparent; /* Add a transparent border */
+  box-sizing: border-box;
+  transition: filter 0.3s ease-in-out; /* Smooth transition for hover effect */
+}
+
+/* Apply grayscale filter on hover */
+/* .game-image-container:hover {
+  filter: brightness(50%);
+} */
+
+/* Styling for the hover text */
+.image-hover-text {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Truculenta', sans-serif;
+  color: white;
+  font-size: 40px;
+}
+
+/* Show the text when hovering over the game image container */
+.game-image-container:hover .image-hover-text {
+  display: block;
 }

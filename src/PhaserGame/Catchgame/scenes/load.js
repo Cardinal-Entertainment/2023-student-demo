@@ -102,6 +102,20 @@ export class Load extends Phaser.Scene {
     ).setDepth(5);
     this.timerText.setOrigin(0, 0);
 
+    //Insert Return Button
+    const returnButton = this.add.image(this.scale.width / 5, this.scale.height / 16, 'red_button').setScale(1.2).setInteractive();
+    returnButton.on('pointerup', () => {
+        window.location.href = '/minigames/'; // Move to Home
+    });
+
+    // Add text for the return button
+    const returnButtonText = this.add.text(this.scale.width / 5, this.scale.height / 16, 'Return Home', {
+        font: '55px TruculentaBold',
+        fill: '#ffffff'
+    });
+    returnButtonText.setOrigin(0.5);    
+
+
     this.summary1 = this.add.text(this.cameras.main.width - 3630, 400, 'CATCH AS MANY', {font: '80px TruculentaBold', fill: '#fff'});
     this.summary2 = this.add.text(this.cameras.main.width - 3600, 600, 'CARDS AS YOU', textStyle1);
     this.summary3 = this.add.text(this.cameras.main.width - 3650, 800, 'CAN BEFORE TIME', textStyle1);

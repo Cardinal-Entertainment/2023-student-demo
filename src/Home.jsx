@@ -74,25 +74,42 @@ function Home() {
             </video>
             <h1 className="gameTitle">CLICK A MINI-GAME TO PLAY</h1>
 
-            <div className="image">
-            <div className="Matchgame">
-                <Link href="/match"> 
-                    <img src="images/match.png" alt="Match Game" className="game-image" />
-                </Link>
+
+
+            <div className='gameText'>
+            <h3 className="match-text">Match Game</h3>     <h3 className="catch-text">Catch Game  </h3>       <h3 className="sort-text">Sort Game</h3>
             </div>
 
-            <div className="Sortgame">
-                <Link href="/sort"> 
-                    <img src="images/sort.png" alt="Sort Game" className="game-image" />
-                </Link>
+
+             <div className="image">
+                <div className="Matchgame">
+                 <Link href="/match">
+                    <div className="game-image-container">
+                        <img src="images/match.png" alt="Match Game" className="match-image" />
+                        <div className="image-hover-text">Click to Play</div>
+                    </div>
+                 </Link>
+                </div>
+
+                <div className="Sortgame">
+                    <Link href="/sort">
+                    <div className="game-image-container">
+                        <img src="images/sort.png" alt="Sort Game" className="sort-image" />
+                        <div className="image-hover-text">Click to Play</div>
+                    </div>
+                    </Link>
+                </div>
+
+                <div className="Catchgame">
+                    <Link href="/catch">
+                    <div className="game-image-container">
+                        <img src="images/catch.png" alt="Catch Game" className="catch-image" />
+                        <div className="image-hover-text">Click to Play</div>
+                    </div>
+                    </Link>
+                </div>
             </div>
 
-            <div className="Catchgame">
-                <Link href="/catch"> 
-                    <img src="images/catch.png" alt="Catch Game" className="game-image" />
-                </Link>
-            </div>
-            </div>
 
             <div className="Leaderboards">
                 {GAMES.map((game, index) => (
