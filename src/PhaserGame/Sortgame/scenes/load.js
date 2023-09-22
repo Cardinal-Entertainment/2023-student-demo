@@ -21,28 +21,6 @@ export class Load extends Phaser.Scene {
         this.isGameOver = false;
     }
 
-    // saveGameData(score, date) {
-    //     // Check if both score and date are defined
-    //     if (score !== undefined && date !== undefined) {
-    //         const gameData = {
-    //             score: score,
-    //             date: date
-    //         };
-    
-    //         let existingData = JSON.parse(localStorage.getItem('Leaderboard')) || [];
-    
-    //         existingData.push(gameData);
-    //         existingData.sort((a, b) => b.score - a.score);
-    
-    //         existingData = existingData.slice(0, 5);
-
-    //         localStorage.setItem('Leaderboard', JSON.stringify(existingData));
-    //     } else {
-    //         // Handle the case where score or date is undefined
-    //         console.error('score and date must be defined to save game data.');
-    //     }
-    // }
-    
 
     loadFont(name, url) {
         var newFont = new FontFace(name, `url(${url})`);
@@ -79,6 +57,10 @@ export class Load extends Phaser.Scene {
         });
     }
     
+    resetGame() {
+        this.matchCount = 0;
+        this.mismatchCount = 0;
+    }
 
     preload() {
         this.loadFont('Truculenta', './fonts/Truculenta-Regular.ttf');
@@ -399,6 +381,7 @@ export class Load extends Phaser.Scene {
         // Add a retry button
         const retryButton = this.add.image(this.scale.width / 2 - 300, this.scale.height / 2 + 200, 'retryButton').setScale(1.2).setInteractive();
         retryButton.on('pointerup', () => {
+            this.resetGame();
             this.scene.restart();
             this.isGameOver = false;
         });
@@ -417,6 +400,7 @@ export class Load extends Phaser.Scene {
         exitButton.on('pointerup', () => {
             // Debugging
             //localStorage.clear();
+            this.resetGame();
             window.location.href = '/minigames/'; // Move to Home
         });
         exitButton.depth = 16;
