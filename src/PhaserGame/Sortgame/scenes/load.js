@@ -178,7 +178,7 @@ export class Load extends Phaser.Scene {
         this.scoreDisplay = this.add.score(2700, 200, 1, 100, score);
 
         //Insert Timer
-        this.timerDisplay = this.add.timer(1390, 200, 1, 120, 5);  
+        this.timerDisplay = this.add.timer(1390, 200, 1, 120, 10);  
 
         // Background Sound
         this.sound.play('backgroundSound', { loop: true });
@@ -207,19 +207,32 @@ export class Load extends Phaser.Scene {
     
     update(time, delta) {
         delta = Math.min(delta, 20);  // capping to avoid large jumps
+        // if (!this.cards.getData('isBeingDragged')) {
+        //     this.cards.x += (delta); 
+        // }
 
-        if (this.isGameOver) {  // Check is game over
-            return;
-        }
+        // this.cards.forEach((cards) => {
 
-        this.cards.forEach((cards) => {
-            cards.x += (delta); 
+        //     cards.x += (delta); 
 
-            if (cards.x > 3840 + 700/2) {
-                cards.destroy();
-                this.cards = this.cards.filter(item => item !== cards);
+        //     if (cards.x > 3840 + 700/2) {
+        //         cards.destroy();
+        //         this.cards = this.cards.filter(item => item !== cards);
+        //     }
+        // });
+
+        this.cards.forEach((card) => {
+            if (!card.getData('isBeingDragged')) {
+                card.x += (delta); 
+            }
+    
+            if (card.x > 3840 + 700/2) {
+                card.destroy();
+                this.cards = this.cards.filter(item => item !== card);
             }
         });
+        
+
         const spawnIncrementRate = 0.08;
         this.cardSpawnCounter += spawnIncrementRate * (delta)
         
@@ -234,6 +247,7 @@ export class Load extends Phaser.Scene {
             this.timerDisplay.destroy();
             this.timerDisplay = null;
             this.isGameOver = true;
+
             this.gameOver();
             this.sound.removeByKey('backgroundSound'); 
         }
@@ -249,8 +263,8 @@ export class Load extends Phaser.Scene {
         let wrong = this.sound.add('wrongSound');
         let correct = this.sound.add('correctSound');
 
-        if (this.timerDisplay && this.timerDisplay.getTime() <= 0) {
-            return; // exit early if timer reached zero
+        if (this.isGameOver) {
+            return; // exit early if the game is over
         }
         let cardNames = ["1_or_11","double","redraw","resurrect","steal","tie_breaker"];
         let randomCardIndex = Phaser.Math.Between(0, cardNames.length - 1);
@@ -261,6 +275,8 @@ export class Load extends Phaser.Scene {
         // When the card is pressed
         card.on('pointerdown', function (pointer) {
             this.setData('isBeingDragged', true);
+            this.setScale(0.4); // Increase the card's scale to make it look like it's "lifting"
+            this.setDepth(1);   // Set the card's depth to make sure it appears above other objects
             click.play();
 
         });
