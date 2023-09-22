@@ -295,29 +295,6 @@ export class Load extends Phaser.Scene {
             }
         }
     }
-
-    async updateHighScore(score) {
-        if (!score || this.timerValue > 0) {
-            console.error('score and date must be defined, and timer should be stopped to save game data.');
-            return;
-        }
-    
-        let leaderboardId = ""; // Default leaderboard ID
-        leaderboardId = "minigame_match";
-    
-        try {
-            // Retrieve the user session
-            const session = await nakamaInstance.getNakamaUserSession();
-            // console.log(score)
-            // Submit the score to the Nakama server
-            const record = await nakamaInstance.client.writeLeaderboardRecord(session, leaderboardId, {score:this.scoreValue});
-    
-            // Log the updated score
-            console.log("Score updated:", record);
-        } catch (error) {
-            console.error("Failed to update score on Nakama:", error);
-        }
-    }
     
     
     flip(card) {
