@@ -4,31 +4,33 @@ import { Container, Button } from 'react-bootstrap';
 import { Link } from "wouter";
 import Leaderboard from './components/Leaderboard';
 import nakamaInstance from './utils/nakama';
+import LandscapeModal from "./components/LandscapeModal";
+import PwaModal from './components/PwaModal'
+import { Modal } from 'react-bootstrap';
 
 const GAMES = [
     { id: "minigame_match", storageKey: "Leaderboard_Match", className: "Matchgame" },
     { id: "minigame_sort", storageKey: "Leaderboard_Sort", className: "Sortgame" },
     { id: "minigame_catch", storageKey: "Leaderboard_Catch", className: "Catchgame" }
-  ];
+];
 
 function Home() {
-
+    const [isShowingLandscapeModal, setIsShowingLandscapeModal] = useState(false);
+    const [isShowingPwaModal, setIsShowingPwaModal] = useState(false);
+    const [isChrome, setIsChrome] = useState(false);
+    const [isSafari, setIsSafari] = useState(false);
     const [leaderboardData, setLeaderboardData] = useState([]);
 
     useEffect(() => {
         // Fetch leaderboard data for each game
         GAMES.forEach(async game => {
             const session = await nakamaInstance.getNakamaUserSession();
-
-            // Assuming each game's leaderboard is identified by the game's id in the Nakama server
             const result = await nakamaInstance.client.listLeaderboardRecords(session, game.id, null, 5);
-
             const transformedData = result.records.map(record => ({
                 username: record.username,
                 numOfPlay: record.num_score, // Adjust as needed.
                 score: record.score
             }));
-
             // Store the fetched data in the state object under the respective game's id
             setLeaderboardData(prevLeaderboards => ({
                 ...prevLeaderboards,
@@ -37,9 +39,34 @@ function Home() {
         });
     }, []); // Empty dependency array to fetch once on component mount
 
+    useEffect(() => {
+        const checkWindowDimensions = () => {
+            if (window.innerHeight > window.innerWidth) {
+                setIsShowingLandscapeModal(true);
+            } else {
+                setIsShowingLandscapeModal(false);
+            }
+        };
+
+        // Call the function to check window dimensions immediately after component mount
+        checkWindowDimensions();
+
+        // Attach event listener to update dimensions and state when the window is resized
+        window.addEventListener("resize", checkWindowDimensions);
+
+        // Clean up the event listener on component unmount to avoid memory leaks
+        return () => {
+            window.removeEventListener("resize", checkWindowDimensions);
+        };
+    }, []); // Empty dependency array, so the effect runs once after the initial render and sets up the event listener
 
     return (
         <Container fluid className="Home-background">
+            <Modal show={isShowingLandscapeModal} centered>
+                <LandscapeModal />
+            </Modal>
+
+
             <audio autoPlay loop className='background-audio'>
                 <source src="./sounds/homeBackground.mp3" type="audio/mpeg" />
             </audio>            

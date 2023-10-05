@@ -1,0 +1,408 @@
+:root {
+  --light-blue: #00D1FF;
+  --dark-container-blue: #0C0F1A;
+  --container-blue: #161B2F;
+  --light-blue-text: #B2F1FF;
+  --pink-text: #BD00FF;
+  --lime-green: #9CE143;
+  --red-text: #e8175b;
+  --gray-text: #5A4F71;
+}
+
+/* body {
+  background: url(../images/bonez_bg.webp)no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+} */
+
+/* * {
+  cursor: url('../images/cursors/cursor_select.png'), auto !important;
+}
+
+*:active {
+  cursor: url('../images/cursors/cursor_click.png'), auto !important;
+} */
+
+.page-fit-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-fit-stretchable {
+  flex-grow: 1;
+}
+
+.bonez-logo {
+  width: 250px;
+}
+
+.page-title {
+  font-family: "Truculenta", sans-serif;
+  color: #00D1FF;
+  font-weight: 900;
+}
+
+.page-subtitle {
+  font-family: "Truculenta", sans-serif;
+  font-weight: 900;
+}
+
+.whole-container {
+  /* Used in deck builder */
+  background-color: var(--container-blue);
+  text-align: center;
+}
+
+.top-container {
+  border-bottom: none !important;
+  background-color: var(--container-blue);
+  text-align: center;
+}
+
+.container-title {
+  font-family: "Truculenta", sans-serif;
+  font-weight: 900;
+  color: white;
+}
+
+.container-subtitle {
+  font-family: "Truculenta", sans-serif;
+  font-weight: bold;
+  color: white;
+}
+
+.container-body-text {
+  font-family: "Truculenta", sans-serif;
+  font-weight: bold;
+  color: var(--light-blue-text);
+}
+
+.bottom-container {
+  background-color: var(--dark-container-blue);
+  border-top: none !important;
+  text-align: center;
+}
+
+.button {
+  background-color: transparent;
+  border-color: transparent;
+  position: relative;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  transition: all 0.1s ease
+}
+
+.button:hover {
+  transform: scale(1.05);
+}
+
+.button-disabled:hover {
+  transform: scale(1) !important;
+}
+
+.button-disabled {
+  background-color: transparent;
+  border-color: transparent;
+  position: relative;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  filter: brightness(0.4)
+}
+
+.button-text {
+  white-space: nowrap;
+
+  font-family: 'Truculenta', sans-serif;
+  font-weight: 900 !important;
+  text-transform: uppercase;
+
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.light-blue-text {
+  color: #00D1FF;
+}
+
+.pink-text {
+  color: #BD00FF;
+}
+
+.red-text {
+  color: #e8175b;
+}
+
+.gray-text {
+  color: #5A4F71;
+}
+
+@media screen and (max-width: 600px) {
+  .bonez-logo {
+    margin-left: 0.8rem;
+    margin-top: 0.8rem;
+    margin-bottom: 1rem;
+    width: 140px;
+  }
+
+  .page-title-container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .page-title {
+    font-size: 32px;
+  }
+
+  .page-subtitle {
+    font-size: 16px;
+  }
+
+  .whole-container,
+  .top-container,
+  .bottom-container {
+    padding: 0.6rem;
+    border: 1px var(--light-blue) solid;
+  }
+
+  .whole-container {
+    border-radius: 15px;
+  }
+
+  .top-container {
+    border-radius: 15px 15px 0px 0px;
+  }
+
+  .bottom-container {
+    border-radius: 0px 0px 15px 15px;
+  }
+
+  .button-container {
+    margin-top: 1.5rem;
+  }
+
+  .button {
+    height: 38px;
+    width: 92px;
+  }
+
+  .button-text {
+    font-size: 12px;
+  }
+
+  .container-title {
+    font-size: 24px;
+  }
+
+  .container-subtitle {
+    font-size: 18px;
+  }
+
+  .container-body-text {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .bonez-logo {
+    margin-left: 0.8rem;
+    margin-top: 0.8rem;
+    margin-bottom: 0.5rem;
+    width: 140px;
+  }
+
+  .page-title-container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .page-title {
+    font-size: 32px;
+  }
+
+  .page-subtitle {
+    font-size: 16px;
+  }
+
+  .whole-container,
+  .top-container,
+  .bottom-container {
+    padding: 0.6rem;
+    border: 1px var(--light-blue) solid;
+  }
+
+  .whole-container {
+    border-radius: 15px;
+  }
+
+  .top-container {
+    border-radius: 15px 15px 0px 0px;
+  }
+
+  .bottom-container {
+    border-radius: 0px 0px 15px 15px;
+  }
+
+  .button-container {
+    margin-top: 1.5rem;
+  }
+
+  .button {
+    height: 38px;
+    width: 92px;
+  }
+
+  .button-text {
+    font-size: 12px;
+  }
+
+  .container-title {
+    font-size: 24px;
+  }
+
+  .container-subtitle {
+    font-size: 18px;
+  }
+
+  .container-body-text {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .bonez-logo {
+    width: 140px;
+  }
+
+  .page-title {
+    font-size: 32px;
+  }
+
+  .page-subtitle {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .bonez-logo {
+    margin-left: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    width: 200px;
+  }
+
+  .page-title-container {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .whole-container,
+  .top-container,
+  .bottom-container {
+    padding: 1rem;
+    border: 3px var(--light-blue) solid;
+  }
+
+  .whole-container {
+    border-radius: 25px;
+  }
+
+  .top-container {
+    border-radius: 25px 25px 0px 0px;
+  }
+
+  .bottom-container {
+    border-radius: 0px 0px 25px 25px;
+  }
+
+  .button-container {
+    margin-right: 1rem;
+    margin-top: 3rem;
+  }
+
+  .button {
+    height: 46px;
+    width: 120px;
+  }
+
+  .button-text {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .bonez-logo {
+    width: 220px;
+  }
+
+  .page-title {
+    font-size: 54px;
+  }
+
+  .page-subtitle {
+    font-size: 30px;
+  }
+
+  .container-title {
+    font-size: 48px;
+  }
+
+  .container-subtitle {
+    font-size: 30px;
+  }
+
+  .container-body-text {
+    font-size: 22px;
+  }
+
+  .button {
+    height: 54px;
+    width: 160px;
+  }
+
+  .button-text {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .bonez-logo {
+    width: 280px;
+  }
+
+  .page-title {
+    font-size: 60px;
+  }
+
+  .page-subtitle {
+    font-size: 36px;
+  }
+
+  .container-title {
+    font-size: 55px;
+  }
+
+  .container-subtitle {
+    font-size: 34px;
+  }
+
+  .container-body-text {
+    font-size: 26px;
+  }
+
+  .button {
+    height: 58px;
+    width: 180px;
+  }
+
+  .button-text {
+    font-size: 22px;
+  }
+}
