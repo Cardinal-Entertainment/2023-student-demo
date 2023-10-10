@@ -98,11 +98,14 @@
   margin-top: 10px;
   border: 3px solid orange; /* Add a green border */
   box-sizing: border-box; /* Include the border in the element's dimensions */
+  position: center;
+  
 }
 
 
 /* App.css */
 .catch-image {
+  position: relative;
   width: 350px; /* Adjust the width as needed */
   height: auto; /* Automatically adjust the height to maintain aspect ratio */
   cursor: pointer; /* Add a pointer cursor to indicate interactivity */
@@ -211,3 +214,149 @@
 .game-image-container:hover .image-hover-text {
   display: block;
 }
+
+@media screen and (min-width: 600px) {
+  .logo-video {
+    width: 30%;
+    height: auto;
+    margin-top: 0%;
+  }
+
+
+  .gameTitle {
+    font-size: 30px;
+    margin-top: 0;
+  }
+
+  .match-image,
+  .sort-image,
+  .catch-image {
+    width: 100px;
+  }
+
+  .match-text,
+  .sort-text,
+  .catch-text {
+    font-size: 15px;
+  }
+
+  .gameText h3 {
+    margin: 0 70px;
+  }
+
+  .custom-leaderboard thead th {
+    padding: 3px 8px; /* Adjust as required */
+    font-size: 10px;
+  }
+
+  .custom-leaderboard tbody td {
+    padding: 3px 8px; /* Adjust as required */
+    font-size: 8px;
+  }
+
+  .game-image-container {
+    margin: 0 45px 20px 45px; /* Adjust margin for spacing between images */
+    width: 100%; /* Adjust as needed */
+  }
+  
+}
+
+
+
+@media screen and (min-width: 800px) {
+  .logo-video {
+    width: 30%;
+    height: auto;
+    margin-top: 0%;
+  }
+
+
+  .gameTitle {
+    font-size: 60px;
+    margin-top: 0;
+  }
+
+  .match-image,
+  .sort-image,
+  .catch-image {
+    width: 150px;
+  }
+
+  .match-text,
+  .sort-text,
+  .catch-text {
+    font-size: 25px;
+  }
+
+  .gameText h3 {
+    margin: 0 70px;
+  }
+
+  .custom-leaderboard thead th {
+    padding: 3px 8px; /* Adjust as required */
+    font-size: 15px;
+  }
+
+  .custom-leaderboard tbody td {
+    padding: 3px 8px; /* Adjust as required */
+    font-size: 13px;
+  }
+
+  .game-image-container {
+    margin: 0 45px 20px 45px; /* Adjust margin for spacing between images */
+    width: 100%; /* Adjust as needed */
+  }
+  
+}
+
+
+
+
+
+
+@media screen and (min-width: 1000px) {
+  .logo-video {
+    width: 30%;
+    height: auto;
+    margin-top: 0%;
+  }
+
+
+  .gameTitle {
+    font-size: 70px;
+    margin-top: 0;
+  }
+
+  .match-image,
+  .sort-image,
+  .catch-image {
+    width: 200px;
+  }
+
+  .match-text,
+  .sort-text,
+  .catch-text {
+    font-size: 40px;
+  }
+
+  .gameText h3 {
+    margin: 0 70px;
+  }
+
+  .custom-leaderboard thead th {
+    padding: 3px 8px; /* Adjust as required */
+    font-size: 20px;
+  }
+
+  .custom-leaderboard tbody td {
+    padding: 3px 8px; /* Adjust as required */
+    font-size: 16px;
+  }
+
+  .game-image-container {
+    margin: 0 45px 20px 45px; /* Adjust margin for spacing between images */
+    width: 100%; /* Adjust as needed */
+  }
+  
+}
+
